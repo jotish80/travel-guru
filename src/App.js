@@ -5,19 +5,30 @@ import './Components/Home';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
+ 
 } from "react-router-dom";
 import Home from './Components/Home';
 import LogIn from './Components/LogIn';
-import Header from './Components/Header';
+ 
+import PlaceDetails from './Components/PlaceDetails';
+import Sajek from './Components/Sajek';
+ import Sreemongol from './Components/Sreemongol';
+ import Shundorbon from './Components/Shundorbon';
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
-        <Route path="/header">
-             <Header />
+         
+          <Route path="/Sajek">
+             <Sajek />
+          </Route>
+          <Route path="/Sreemongol">
+             <Sreemongol />
+          </Route>
+          <Route path="/Shundorbon">
+             <Shundorbon />
           </Route>
           <Route exact path="/">
             <Home />
@@ -27,6 +38,9 @@ function App() {
           </Route>
           <Route path="/LogIn">
             <LogIn />
+          </Route>
+          <Route path="/PlaceDetails">
+            <PlaceDetails />
           </Route>
           {/* <Route path="*">
             <NotFound />

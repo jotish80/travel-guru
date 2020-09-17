@@ -1,5 +1,6 @@
  import React from 'react';
- import Icon from '../Icon/fb.png'
+ import Icon from '../Icon/fb.png';
+ import Icon2 from '../Icon/google.png';
  
  const LogIn = () => {
      return (
@@ -11,17 +12,18 @@
                 <input type="checkbox"/>
                 <p>Remember me</p>
                 <button>Login</button> <br/>
-                <img src={Icon} alt=""/>
+                <img style={{width: '3%'}} src={Icon} alt=""/> <p>Continue with facebook</p>  
+                <img style={{width: '3%'}} src={Icon2} alt=""/> <p>Continue with google</p>
               </form>
               <form>
-                  <h1>Creat an account</h1>
+                  <h1>Create an account</h1>
                   <input type="text" placeholder="First name"/> <br/>
                   <input type="text" placeholder="Last name"/> <br/>
                 <input type="text" placeholder="User Name or Email"/> <br/> 
                 <input type="password" placeholder="Password"/> <br/>
                  <input type="text" placeholder="Confirm password"/> <br/>
                  
-                <button>Creat an account</button>
+                <button>Create an account</button>
               </form>
 
          </div>
