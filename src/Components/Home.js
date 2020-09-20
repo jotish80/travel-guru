@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import * as firebase from "firebase/app";
 import "firebase/auth";
-import firebaseConfig from '../firebase.config';
 import '../Screenshot/Home.png';
 import './Home.css';
 import Image from '../Image/BgImage.png';
 import Image1 from '../Image/Sajek.png';
 import Image2 from '../Image/Sreemongol.png';
 import Image3 from '../Image/sundorbon.png';
-import Card from './Card.js';
 import { Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
  

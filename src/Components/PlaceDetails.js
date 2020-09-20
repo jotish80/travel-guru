@@ -1,25 +1,21 @@
-import React, { useState } from 'react';
+ import React from 'react';
+ import Image5 from'../Image/Rectangle 26.png';
+ import Image6 from '../Image/Rectangle 27.png';
+ import Image7 from'../Image/Rectangle 28.png';
+
+ const hotelStyle ={
+     display: 'grid'
+
+ }
+ const PlaceDetails = () => {
+     return (
+         <div style={hotelStyle}>
+             <h1>This is place details</h1>
+             <img src={Image5} alt=""/>
+             <img src={Image6} alt=""/>
+             <img src={Image7} alt=""/>
+         </div>
+     );
+ };
  
-import Icon from '../Icon/calender_icon.png'
-import image from '../FakeData';
-
-const PlaceDetails = () => {
-   const [image, setImage] = useState({});
-   console.log(image);
-    return (
-        <div>
-            <div>
-                  <img src={image} alt=""/>
-            </div>
-            <div>
-                <form action="">
-                <input type="text" placeholder="City Name"/> <br/> 
-                <input type="password" placeholder="City Name"/> <br/>
-                 <input type="text" placeholder="date" img={Icon} /> 
-                </form>
-            </div>
-        </div>
-    );
-};
-
-export default PlaceDetails;
+ export default PlaceDetails;
