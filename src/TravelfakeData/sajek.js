@@ -1,0 +1,4 @@
+var sajek =
+    [{ "key": "B00OSTKZWM", "category": "sajek", "name": "SAJEK", "description": "The name of Sajek Valley came from the Sajek River that originates from Karnafuli river. The Sajek river works as a border between Bangladesh and India.Sajek is a union located in the north of Chittagong Hill Tracts. It's under Baghaichori Upazila in Rangamati hill district, it is situated 67 kilometres (42 mi) north-east from Khagrachhari town and 95 kilometres (59 mi) north from Rangamati city. The border of Bangladesh and Mizoram of India is 8 kilometres (5.0 mi) east from Sajek", "image": "https://i.ibb.co/f97Pbg6/Sajek.png" }];
+
+export default sajek;

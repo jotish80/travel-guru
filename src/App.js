@@ -2,6 +2,7 @@ import React, { createContext, useState } from 'react';
 import '../src/Logo.png';
 import './App.css';
 import './Components/Home';
+ 
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,6 +18,8 @@ import Sreemongol from './Components/Sreemongol';
 import Shundorbon from './Components/Shundorbon';
 import NotFound from './NotFound';
 import PrivateRoute from './Components/PrivateRoute';
+import Header from './Components/Header';
+ 
 
 export const UserContext = createContext();
 
@@ -27,8 +30,9 @@ function App() {
 
   return (
     <UserContext.Provider value={[loggedUser, setLoggedUser]}>
-      <p>Name: {loggedUser.name}</p>
-      <Router>
+      
+       <Router>
+        <Header />
         <Switch>
           <Route path="/home">
             <Home />

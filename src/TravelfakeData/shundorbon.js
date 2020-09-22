@@ -1,0 +1,4 @@
+var shundorbon =
+    [{ "key": "B002RL8IYK", "category": "shundorbon", "name": "SHUNDORBON", "description": "The Sundarbans is a mangrove area in the delta formed by the confluence of the Ganges, Brahmaputra and Meghna Rivers in the Bay of Bengal. It spans from the Hooghly River in India's state of West Bengal to the Baleswar River in Bangladesh. It comprises closed and open mangrove forests, agriculturally used land, mudflats and barren land, and is intersected by multiple tidal streams and channels. Four protected areas in the Sundarbans are enlisted as UNESCO World Heritage Sites, viz. Sundarbans National Park, Sundarbans West, Sundarbans South and Sundarbans East Wildlife Sanctuaries.", "image": "https://i.ibb.co/pLhZFgb/sundorbon.png" }]
+
+export default shundorbon;

@@ -45,22 +45,21 @@ const LogIn = () => {
 
   const handleFbSignIn = () => {
     firebase.auth().signInWithPopup(fbProvider)
-    .then(function(result) {
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      var token = result.credential.accessToken;
-      // The signed-in user info.
-      var user = result.user;
-       console.log('fb user', user);
-    }).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });
+      .then(res => {
+        const newUserInfo = { ...user }
+        setUser(newUserInfo);
+        console.log('sign in fb', res.user);
+        const { displayName, email } = res.user;
+        const newUser = { name: displayName, email }
+        setLoggedUser(newUser);
+        history.replace(from);
+      }).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+
+      });
   }
 
   const handleBlur = (event) => {
@@ -138,26 +137,20 @@ const LogIn = () => {
         <h1>Create an account</h1>
         <input type="checkbox" onChange={() => setUserNew(!userNew)} name="userNew" />
         <label htmlFor="userNew"> New User Sign Up</label><br />
-        {userNew && <input type="text" name="first-name" onBlur={handleBlur} placeholder="First name" required />}
+        {userNew && <input type="text" name="first-name" onBlur={handleBlur} placeholder="First name" required />} <br />
         {userNew && <input type="text" name="last-name" onBlur={handleBlur} placeholder="Last name" required />} <br />
         <input type="text" name="email" onBlur={handleBlur} placeholder="User Name or Email" required /> <br />
         <input type="password" name="password" onBlur={handleBlur} placeholder="Password" required /> <br />
+
+        {userNew && <input type="text" name="last-name" onBlur={handleBlur} placeholder="Confirm password" required />}
+        <br />
+
         <input type="submit" value="Login" /> <br />
         <hr />
         <p>Already have an account? </p> <br />
         <p>Or</p>
         <img style={{ width: '2%' }} src={Icon2} alt="" />  <button onClick={handelSignIn}>Continue with google </button> <br />
         <img style={{ width: '2%' }} src={Icon} alt="" /> <button onClick={handleFbSignIn}>Continue with facebook</button> <br />
-
-
-        {/* <h1>Login</h1>
-        
-        <input type="password" name="password" onBlur={handleBlur} placeholder="Confirm password" required /> <br />
-        <input type="text" placeholder="User Name or Email" required /> <br />
-        <input type="password" placeholder="Password" required /> <br />
-        <input type="checkbox" />
-        <p>Remember me</p> */}
-
       </form>
 
       <p style={{ color: 'red' }}>{user.error}</p>
