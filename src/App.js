@@ -19,6 +19,7 @@ import Shundorbon from './Components/Shundorbon';
 import NotFound from './NotFound';
 import PrivateRoute from './Components/PrivateRoute';
 import Header from './Components/Header';
+import Booking from './Components/Booking';
  
 
 export const UserContext = createContext();
@@ -36,6 +37,9 @@ function App() {
         <Switch>
           <Route path="/home">
             <Home />
+          </Route>
+          <Route path="/booking/:bookingkey">
+            <Booking />
           </Route>
           <Route path="/Sajek">
             <Sajek />
