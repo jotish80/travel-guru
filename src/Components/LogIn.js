@@ -6,6 +6,7 @@ import "firebase/auth";
 import firebaseConfig from "../firebase.config";
 import { UserContext } from "../App";
 import { useHistory, useLocation } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
 
 firebase.initializeApp(firebaseConfig);
 
@@ -34,7 +35,7 @@ const LogIn = () => {
         const signInUser = {
           isSignIn: true,
           name: displayName,
-          email: "",
+          email,
         };
         // setUser(signInUser);
         setLoggedUser(signInUser);
@@ -141,15 +142,76 @@ const LogIn = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <form onSubmit={handleCreateAccount}>
+      <Form onSubmit={handleCreateAccount}>
+        <h1>Login</h1>
+        {userNew && <h1>Create New Account</h1>}
+        {userNew && (
+          <Form.Group controlId="formGroupName">
+            <Form.Label>First Name</Form.Label>
+            <Form.Control
+              type="name"
+              placeholder="First Name"
+              onblur={handleBlur}
+            />
+          </Form.Group>
+        )}
+        {userNew && (
+          <Form.Group controlId="formGroupName">
+            <Form.Label>Last Name</Form.Label>
+            <Form.Control
+              type="name"
+              placeholder="Last Name"
+              onblur={handleBlur}
+            />
+          </Form.Group>
+        )}
+        <Form.Group controlId="formGroupEmail">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            onblur={handleBlur}
+          />
+        </Form.Group>
+        <Form.Group controlId="formGroupPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            onblur={handleBlur}
+          />
+        </Form.Group>
+        {userNew && (
+          <Form.Group controlId="formGroupPassword">
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              onblur={handleBlur}
+            />
+          </Form.Group>
+        )}
+        <Button onSubmit={handleCreateAccount} variant="warning">
+          Login
+        </Button>
+        <p>
+          Already have an account?{" "}
+          <span onClick={() => setUserNew(!userNew)}>Create New Account</span>
+        </p>{" "}
+        <br />
+        <img style={{ width: "2%" }} src={Icon2} alt="" />
+        <button onClick={handelSignIn}>Continue with google </button> <br />
+        <img style={{ width: "2%" }} src={Icon} alt="" />
+        <button onClick={handleFbSignIn}>Continue with facebook</button> <br />
+      </Form>
+      <Form onSubmit={handleCreateAccount}>
         <h1>Create an account</h1>
         <input
           type="checkbox"
           onChange={() => setUserNew(!userNew)}
           name="userNew"
         />
-        <label htmlFor="userNew"> New User Sign Up</label>
-        <br />
+        <label htmlFor="userNew"> New User Sign Up</label> <br />
         {userNew && (
           <input
             type="text"
@@ -198,13 +260,13 @@ const LogIn = () => {
         <br />
         <input type="submit" value="Login" /> <br />
         <hr />
-        <p>Already have an account? </p> <br />
+        <p>Already have an account? Create an account</p> <br />
         <p>Or</p>
-        <img style={{ width: "2%" }} src={Icon2} alt="" />{" "}
+        <img style={{ width: "2%" }} src={Icon2} alt="" />
         <button onClick={handelSignIn}>Continue with google </button> <br />
-        <img style={{ width: "2%" }} src={Icon} alt="" />{" "}
+        <img style={{ width: "2%" }} src={Icon} alt="" />
         <button onClick={handleFbSignIn}>Continue with facebook</button> <br />
-      </form>
+      </Form>
 
       <p style={{ color: "red" }}>{user.error}</p>
     </div>

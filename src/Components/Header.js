@@ -22,10 +22,10 @@ const Header = () => {
           <Nav.Link href="#pricing">Blog</Nav.Link>
           <Nav.Link href="#pricing">Contact</Nav.Link>
           {loggedUser.name ? (
-            loggedUser.name
+            <h4>{loggedUser.name}</h4>
           ) : (
             <Link to="/LogIn">
-              <Button variant="outline-light">Login</Button>
+              <Button variant="warning">Login</Button>
             </Link>
           )}
         </Nav>

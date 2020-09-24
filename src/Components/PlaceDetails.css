@@ -1,0 +1,12 @@
+.placeDetails {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+.placeDetails__left,
+.placeDetails__right {
+  padding: 20px;
+  margin: 10px;
+  height: 100%;
+  width: 50%;
+}

@@ -1,0 +1,19 @@
+.hotel-details {
+  display: flex;
+  height: 200px;
+  width: 100%;
+}
+.images {
+  width: 40%;
+  height: 100%;
+}
+.hotel-details-right {
+  width: 60%;
+  height: 100%;
+}
+.images > img {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 10px;
+}

@@ -8,7 +8,6 @@ const FakeDataDetails = (props) => {
   const place = props.places;
   console.log(place);
   const { name, image, key, description } = place;
-  const [details, setDetails] = useState({});
 
   return (
     <div
