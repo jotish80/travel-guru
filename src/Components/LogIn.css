@@ -1,0 +1,24 @@
+.input-field {
+  margin: 10px;
+  width: 400px;
+  height: 46px;
+  border: solid 1px #c2c2c2;
+
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: -1px 1px 5px 4px whitesmoke;
+}
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+.form {
+  text-align: center;
+  border: 1px solid gray;
+  border-radius: 20px;
+  text-emphasis: center;
+  padding: 6px 18px;
+}

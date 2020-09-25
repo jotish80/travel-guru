@@ -7,7 +7,7 @@ import firebaseConfig from "../firebase.config";
 import { UserContext } from "../App";
 import { useHistory, useLocation } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
-
+import "./LogIn.css";
 firebase.initializeApp(firebaseConfig);
 
 const LogIn = () => {
@@ -27,6 +27,7 @@ const LogIn = () => {
   const googleProvider = new firebase.auth.GoogleAuthProvider();
   const fbProvider = new firebase.auth.FacebookAuthProvider();
   const handelSignIn = () => {
+    //Start Log in with google //
     firebase
       .auth()
       .signInWithPopup(googleProvider)
@@ -45,7 +46,9 @@ const LogIn = () => {
         console.log(error.message);
       });
   };
+  // End log in with google  //
 
+  // Start log in with facebook  //
   const handleFbSignIn = () => {
     firebase
       .auth()
@@ -66,7 +69,9 @@ const LogIn = () => {
         console.log(errorCode, errorMessage);
       });
   };
+  // End LogIn with facebook //
 
+  // start HandleBlur  ///
   const handleBlur = (event) => {
     let isFormValid = true;
     if (event.target.name === "email") {
@@ -83,6 +88,8 @@ const LogIn = () => {
       setUser(newUserInfo);
     }
   };
+  // End handleBlur //
+  // start with handle create account //
   const handleCreateAccount = (event) => {
     if (userNew && user.email && user.password) {
       firebase
@@ -101,6 +108,8 @@ const LogIn = () => {
           setUser(newUserInfo);
         });
     }
+    // end handle create account  ///
+    //start signInWithEmailAndPassword //
     if (!userNew && user.email && user.password) {
       firebase
         .auth()
@@ -124,7 +133,9 @@ const LogIn = () => {
     }
     event.preventDefault();
   };
+  // End signInWithEmailAndPassword //
 
+  //start updateUserInfo //
   const updateUserInfo = (name) => {
     var user = firebase.auth().currentUser;
 
@@ -139,136 +150,135 @@ const LogIn = () => {
         // An error happened.
       });
   };
-
+  // End updateUserInfo //
   return (
-    <div style={{ textAlign: "center" }}>
-      <Form onSubmit={handleCreateAccount}>
-        <h1>Login</h1>
-        {userNew && <h1>Create New Account</h1>}
-        {userNew && (
-          <Form.Group controlId="formGroupName">
-            <Form.Label>First Name</Form.Label>
-            <Form.Control
-              type="name"
-              placeholder="First Name"
-              onblur={handleBlur}
+    <div className="login">
+      <div className="form">
+        <Form onSubmit={handleCreateAccount}>
+          <h1>Login</h1>
+          {userNew && (
+            <input
+              className="input-field"
+              type="text"
+              name="first-name"
+              onBlur={handleBlur}
+              placeholder="First name"
+              required
             />
-          </Form.Group>
-        )}
-        {userNew && (
-          <Form.Group controlId="formGroupName">
-            <Form.Label>Last Name</Form.Label>
-            <Form.Control
-              type="name"
-              placeholder="Last Name"
-              onblur={handleBlur}
+          )}
+          <br />
+          {userNew && (
+            <input
+              className="input-field"
+              type="text"
+              name="last-name"
+              onBlur={handleBlur}
+              placeholder="Last name"
+              required
             />
-          </Form.Group>
-        )}
-        <Form.Group controlId="formGroupEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter email"
-            onblur={handleBlur}
+          )}{" "}
+          <br />
+          <input
+            className="input-field"
+            type="text"
+            name="email"
+            onBlur={handleBlur}
+            placeholder="User Name or Email"
+            required
           />
-        </Form.Group>
-        <Form.Group controlId="formGroupPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
+          <br />
+          <input
+            className="input-field"
             type="password"
+            name="password"
+            onBlur={handleBlur}
             placeholder="Password"
-            onblur={handleBlur}
+            required
           />
-        </Form.Group>
-        {userNew && (
-          <Form.Group controlId="formGroupPassword">
-            <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              onblur={handleBlur}
+          <br />
+          {userNew && (
+            <input
+              className="input-field"
+              type="text"
+              name="last-name"
+              onBlur={handleBlur}
+              placeholder="Confirm password"
+              required
             />
-          </Form.Group>
-        )}
-        <Button onSubmit={handleCreateAccount} variant="warning">
-          Login
-        </Button>
-        <p>
-          Already have an account?{" "}
-          <span onClick={() => setUserNew(!userNew)}>Create New Account</span>
-        </p>{" "}
-        <br />
-        <img style={{ width: "2%" }} src={Icon2} alt="" />
-        <button onClick={handelSignIn}>Continue with google </button> <br />
-        <img style={{ width: "2%" }} src={Icon} alt="" />
-        <button onClick={handleFbSignIn}>Continue with facebook</button> <br />
-      </Form>
-      <Form onSubmit={handleCreateAccount}>
-        <h1>Create an account</h1>
-        <input
-          type="checkbox"
-          onChange={() => setUserNew(!userNew)}
-          name="userNew"
-        />
-        <label htmlFor="userNew"> New User Sign Up</label> <br />
-        {userNew && (
-          <input
-            type="text"
-            name="first-name"
-            onBlur={handleBlur}
-            placeholder="First name"
-            required
-          />
-        )}{" "}
-        <br />
-        {userNew && (
-          <input
-            type="text"
-            name="last-name"
-            onBlur={handleBlur}
-            placeholder="Last name"
-            required
-          />
-        )}{" "}
-        <br />
-        <input
-          type="text"
-          name="email"
-          onBlur={handleBlur}
-          placeholder="User Name or Email"
-          required
-        />{" "}
-        <br />
-        <input
-          type="password"
-          name="password"
-          onBlur={handleBlur}
-          placeholder="Password"
-          required
-        />{" "}
-        <br />
-        {userNew && (
-          <input
-            type="text"
-            name="last-name"
-            onBlur={handleBlur}
-            placeholder="Confirm password"
-            required
-          />
-        )}
-        <br />
-        <input type="submit" value="Login" /> <br />
-        <hr />
-        <p>Already have an account? Create an account</p> <br />
-        <p>Or</p>
-        <img style={{ width: "2%" }} src={Icon2} alt="" />
-        <button onClick={handelSignIn}>Continue with google </button> <br />
-        <img style={{ width: "2%" }} src={Icon} alt="" />
-        <button onClick={handleFbSignIn}>Continue with facebook</button> <br />
-      </Form>
+          )}
+          <small>Password must have 6 character(1number)</small>
+          <br />
+          <input type="checkbox" name="RememberMe" id="" />
+          <p>Remember Me</p>
+          <br />
+          <button
+            style={{
+              width: "70%",
+              border: "1px solid gray",
+              borderRadius: "25px",
+              padding: "5px 0px",
+              backgroundColor: "rgb(255,166,0)",
+            }}
+          >
+            Login
+          </button>{" "}
+          <br />
+          <hr />
+          <p>
+            Already have an account?{" "}
+            <span
+              style={{
+                color: "rgb(255,166,0)",
+                cursor: "pointer",
+                textDecoration: "underline",
+              }}
+              onClick={() => setUserNew(!userNew)}
+            >
+              Create New Account
+            </span>{" "}
+          </p>{" "}
+          <br />
+          <p>Or</p>
+          <button
+            style={{
+              width: "70%",
+              border: "1px solid gray",
+              borderRadius: "25px",
+              padding: "5px 0px",
+            }}
+            onClick={handelSignIn}
+          >
+            <img
+              style={{ width: "10%", height: "25px", objectFit: "contain" }}
+              src={Icon2}
+              alt=""
+            />
+            &nbsp; &nbsp; &nbsp; Continue with Google{" "}
+          </button>{" "}
+          <br />
+          <br />
+          <button
+            style={{
+              width: "70%",
+              border: "1px solid gray",
+              borderRadius: "25px",
+              padding: "5px 0px",
+              position: "relative",
+            }}
+            onClick={handleFbSignIn}
+          >
+            <img
+              style={{ width: "10%", height: "30px", objectFit: "contain" }}
+              src={Icon}
+              alt=""
+            />
+            &nbsp; &nbsp; &nbsp; Continue with Facebook
+          </button>{" "}
+          <br />
+        </Form>
 
-      <p style={{ color: "red" }}>{user.error}</p>
+        <p style={{ color: "red" }}>{user.error}</p>
+      </div>
     </div>
   );
 };

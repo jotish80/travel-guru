@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import Image5 from "../Image/Rectangle 26.png";
 import Image6 from "../Image/Rectangle 27.png";
 import Image7 from "../Image/Rectangle 28.png";
-
 import MyComponent from "./MyComponent";
 import "./PlaceDetails.css";
 import { DetailsContext } from "../App";
