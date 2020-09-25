@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
+import { DetailsContext } from "../App";
 import travelfakeData from "../TravelfakeData";
 import "./Booking.css";
+
 const Booking = () => {
   const { bookingkey } = useParams();
-  console.log(travelfakeData);
   const findData = travelfakeData.find((item) => item.key === bookingkey);
-  console.log(findData);
+  const [details, setDetails] = useContext(DetailsContext);
+
   return (
     <div className="booking">
       <div className="booking__left-section">
@@ -32,7 +34,7 @@ const Booking = () => {
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Destination</Form.Label>
-            <Form.Control type="text" placeholder="" />
+            <Form.Control type="text" placeholder="" value={details.name} />
           </Form.Group>
           <Row>
             <Col sm={12} md={6}>

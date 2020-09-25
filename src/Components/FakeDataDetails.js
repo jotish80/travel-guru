@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "firebase/auth";
 import "../Screenshot/Home.png";
 import "./Home.css";
@@ -6,9 +6,7 @@ import "./FakeDataDetail.css";
 
 const FakeDataDetails = (props) => {
   const place = props.places;
-  console.log(place);
   const { name, image, key, description } = place;
-
   return (
     <div
       onClick={() => props.handleClick(key)}

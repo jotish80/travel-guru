@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { DetailsContext } from "../App";
 import "./HotelDetails.css";
+
 const HotelDetails = ({ img }) => {
   const [details, setDetails] = useContext(DetailsContext);
+
   return (
     <div className="hotel-details">
       <div className="images">

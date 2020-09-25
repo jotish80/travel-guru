@@ -11,7 +11,7 @@ const center = {
   lng: -38.523,
 };
 
-function MyComponent() {
+function Mymap() {
   const [map, setMap] = React.useState(null);
 
   const onLoad = React.useCallback(function callback(map) {
@@ -39,4 +39,4 @@ function MyComponent() {
   );
 }
 
-export default React.memo(MyComponent);
+export default React.memo(Mymap);

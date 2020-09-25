@@ -6,8 +6,9 @@ import "firebase/auth";
 import firebaseConfig from "../firebase.config";
 import { UserContext } from "../App";
 import { useHistory, useLocation } from "react-router-dom";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import "./LogIn.css";
+
 firebase.initializeApp(firebaseConfig);
 
 const LogIn = () => {
@@ -206,6 +207,7 @@ const LogIn = () => {
               required
             />
           )}
+          <br />
           <small>Password must have 6 character(1number)</small>
           <br />
           <input type="checkbox" name="RememberMe" id="" />
